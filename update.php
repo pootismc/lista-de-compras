@@ -1,24 +1,19 @@
 <?php
 include 'connect.php';
+$name=$_GET['deletename'];
+
 if(isset($_POST['submit'])){
     $name=$_POST['name'];
 
-    $sql = "INSERT INTO crud "."(name) "."VALUES "."('$name')";
-
+    $sql = "update  'crud' set name=$name";
     $result =mysqli_query($con,$sql);
-           
-
     if($result){
-        // echo "Data inserted";
         header('location:display.php');
     }else{
         die(mysqli_error($con));
     }
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +31,7 @@ if(isset($_POST['submit'])){
             <label class="my-5">Item name</label>
             <input type="text" class="form-control" placeholder="Enter item name" name="name">
         </div>
-        <button type="submit" class="btn btn-primary my-5" name="submit">Submit</button>
+        <button type="submit" class="btn btn-primary my-5" name="submit">Update</button>
     </form>  
     </div>   
 </body>
